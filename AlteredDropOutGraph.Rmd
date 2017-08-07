@@ -1,0 +1,32 @@
+---
+title: "AlteredDropOutGraph"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+sizeMat = dim(SS1fc)
+firstrun = TRUE
+for (i in 1:sizeMat[2]){
+  cols = SS1fc[[i]]
+  firstIndex = cols[1]
+  if (firstIndex != 0){
+    if (firstrun) {
+      dropOutProb = cols
+      firstrun = FALSE
+    } else {
+      dropOutProb = rbind(dropOutProb,cols)
+    }
+  }
+}
+dropOutProb = t(dropOutProb)
+Log10Expression = seq(0,4,length.out = 401)
+rownames(b) = Log10Expression
+```
+
+```{r}
+matplot(Log10Expression,dropOutProb,type = "l", col = "orange")
+```
