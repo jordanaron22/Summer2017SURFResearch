@@ -5,4 +5,5 @@ def main():
     for line in lines:
         line = line.split()
         file2.write(line[0] + "\n")
+    print("OldESGeneNames.txt was created")
 main()
