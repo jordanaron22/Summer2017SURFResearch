@@ -12,7 +12,7 @@ function imputedMatrix = MRI(dataMatrix, failMatrix, reps)
             holdingMat = zeros(1,reps);
             for k = 1:reps
                 
-                if dataMatrix(i,j) == 0
+                if dataMatrix(i,j) == 0 & sum(gene)~=0
                     if rand(1) < failMatrix(i,j)
                         randInd = randi(length(newGene));
                         holdingMat(k) = newGene(randInd);
